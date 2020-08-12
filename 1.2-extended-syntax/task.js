@@ -21,29 +21,26 @@ function getResult(a, b, c){
  // код для задачи №1 писать здесь
 
 
- let marks
-function getAverageMark(marks){
+
+ function getAverageMark(marks){
     
     let averageMark 
     if (marks.length == 0) {
         return 0;
     } else if (marks.length > 5) {         
         marks.splice(5);
-        let sum = 0;    
-        for (let i = 0; i < marks.length; i++) {
-        sum += marks[i];
-        }
-        averageMark = sum / marks.length;
-        console.log("Колличество оценок больше 5. \n Средняя оценка = " + averageMark + ".")
-    } else {
-        let sum = 0;    
-        for (let i = 0; i < marks.length; i++) {
-        sum += marks[i];
-        }
-        averageMark = sum / marks.length;
-        console.log(averageMark)        
+        console.log ("Колличество оценок больше 5. \n Средняя оценка =")  
     }
+    let sum = 0;    
+    for (let i = 0; i < marks.length; i++) {
+       sum += marks[i];
+    }
+    averageMark = sum / marks.length;
+    console.log(averageMark)
 }
+
+let marks = [3, 4, 5, 5, 6, 5]
+getAverageMark(marks)
     
  
     // код для задачи №2 писать здесь
