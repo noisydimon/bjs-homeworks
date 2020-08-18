@@ -43,39 +43,86 @@ function getSolutions(a, b, c){
 
 
 
-        function getAverageScore(data) {
-            let sumSubject = 0;
-            for (let i = 0; i < data.length; i++) {      
-            }
-        }
-        function getAverageMarks(marks) {    
-            for(let t = 0; t < data[i].length; t++){
-              sumSubject += data[i].length[t];  
-              let averageMark = sumSubject / data[i].length;
-              return data.[i] = averageMark;
+
+
+
+
+
+         let algebra = [3, 4, 5, 3, 4];
+         let geometry = [4, 5, 2, 4];
+         let russian = [3, 4];
+         let physics = [3, 4, 4];
+         let music = [3, 4, 5, 3, 4];
+         let english = [3, 4, 2, 4, 4];
+         let poetry = [3, 3, 5, 4];
+         let chemistry = [3, 2, 3, 4, 4];
+         let french = [3, 4, 5, 3, 4, 5];
+         
+         let data = {
+           algebra: algebra,
+           geometry: geometry,
+           russian: russian,
+           physics: physics,
+           music: music,
+           english: english,
+           poetry: poetry,
+           chemistry: chemistry,
+           french: french
+         }
+         
+         function getAverageMark(marks) {
+           if (marks.length == 0) {
+             return 0
+           } else {
+             let sum = 0;
+             for (let i = 0; i < marks.length; i++) {
+               sum += marks[i];
              }
-        }
-        
-                 
-                 let algebra = [3, 4, 5, 3, 4];          
-                 let geometry = [4, 5, 2, 4]; 
-                 let russian = [3, 4]; 
-                 let physics = [3, 4, 4]; 
-                 let music = [3, 4, 5, 3, 4]; 
-                 let english = [3, 4, 2, 4, 4]; 
-                 let poetry = [3, 3, 5, 4]; 
-                 let chemistry = [3, 2, 3, 4, 4]; 
-                 let french = [3, 4, 5, 3, 4, 5]; 
-        
-                 let data = {
-                    algebra: algebra,
-                    geometry: geometry,
-                    russian: russian,
-                    physics: physics,
-                    music: music,
-                    english: english,
-                    poetry: poetry,
-                    chemistry: chemistry,
-                    french: french
-                 }
-                 getAverageMarks(date)
+             return sum / marks.length
+           }
+         
+         }
+         
+         function getAverageScore(data) {
+           let result = {};
+           for(key in data) {
+             result[key] = getAverageMark(data[key])
+             result.average = getAverageMark(Object.values(result))
+           }
+           return result
+         }
+         
+         
+
+
+
+         function getPersonData(secretData) { 
+            let person = {
+              firstName: getDecodedValue(secretData.aaa),
+              lastName: getDecodedValue(secretData.bbb)
+            }
+          
+            
+          return person
+          }
+          
+          
+          function getDecodedValue(secret) {
+          if (secret == 1) {
+            return "Эмильо"
+          } else if (secret == 0) {
+            return "Родриго"
+          }
+          }
+          
+          /*
+          let secretData = {
+            firstName: "Эмильо",
+            lastName: "Родриго"
+          }
+          */
+          
+          console.log(getPersonData({
+            aaa: 0,
+            bbb: 0
+          }))
