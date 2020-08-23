@@ -9,9 +9,9 @@ String.prototype.isPalindrome = function () {
   }
 
   if (arrayStr.join('') == arrayStr.reverse('').join('')) {
-    return (this, true)
+    return (true)
   } else {
-    return (this, false)
+    return (false)
   }
 }
 
@@ -38,23 +38,25 @@ getAverageMark(marks)
 
 
 //Задание 3
-let now = Date.now();
 
-let userDate = new Date(2016, 0, 1, 12, 00);
-let birthday = Date.parse(userDate);
-let diff = now - birthday;
-
-let quantityMsInYear = 31536000000;
-let quantityMsInVisYear = 31622400000;
-let averageQuantityMsInYear = 31556952000;
-
-function checkBirthday(birthday) {
-
-  let age = diff / averageQuantityMsInYear;
-  if (age >= 18) {
-    return 'клиент совершеннолетний';
-  } else {
-    return 'клиент несовершеннолетний';
+function checkBirthday(userDate) {
+  let now = Date.now();
+  console.log(now)
+  
+  let birthday = Date.parse(userDate);
+  console.log(birthday)
+  let diff = now - birthday;
+  console.log(diff)
+  
+  let quantityMsInYear = 31536000000;
+  let quantityMsInVisYear = 31622400000;
+  let averageQuantityMsInYear = 31556952000;
+  
+  
+    let age = diff / averageQuantityMsInYear;
+    console.log(age)
+  
+    return age >= 18
   }
 
-}
+//let birthday = Date.parse(userDate);
