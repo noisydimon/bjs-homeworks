@@ -11,34 +11,34 @@ function getSolutions(a, b, c){
     
     if (D < 0) {
         result.D = D;
-        result.roots = []
+        result.roots = [];
      } else if (D == 0) {
         let x1 = (- b) / 2 * a; 
         result.D = D;
-        result.roots = [x1]
+        result.roots = [x1];
      } else {
         let x1 = ((- b) + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
         let x2 = ((- b) - Math.sqrt(Math.pow(b, 2) + 4 * a * c)) / (2 * a); 
         result.D = D;
-        result.roots = [x1, x2]
+        result.roots = [x1, x2];
     }    
       return result;
      }
-     getSolutions(1, 2, 3)
+     getSolutions(1, 2, 3);
     
      function showSolutionsMessage( a, b, c ){
-             let result = getSolutions(a, b, c)
+             let result = getSolutions(a, b, c);
              console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}.`);
              console.log(`Значение дискриминанта: ${result.D}`);
              if(result.D < 0) {
-                 console.log(`Уравнение не имеет вещественных корней`)
+                 console.log(`Уравнение не имеет вещественных корней`);
              } else if(result.D == 0) {
-                 console.log(`Уравнение имеет один корень X₁ = ${result.roots}`)
+                 console.log(`Уравнение имеет один корень X₁ = ${result.roots}`);
              } else {
-                 console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`)
+                 console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`);
              }
          }
-         showSolutionsMessage(2, 4, 2)
+         showSolutionsMessage(2, 4, 2);
 
 
 
@@ -72,24 +72,24 @@ function getSolutions(a, b, c){
          
          function getAverageMark(marks) {
            if (marks.length == 0) {
-             return 0
+             return 0;
            } else {
              let sum = 0;
              for (let i = 0; i < marks.length; i++) {
                sum += marks[i];
              }
-             return sum / marks.length
+             return sum / marks.length;
            }
          
          }
          
          function getAverageScore(data) {
            let result = {};
-           for(key in data) {
-             result[key] = getAverageMark(data[key])
-             result.average = getAverageMark(Object.values(result))
+           for(let key in data) {
+             result[key] = getAverageMark(data[key]);
+             result.average = getAverageMark(Object.values(result));
            }
-           return result
+           return result;
          }
          
          
@@ -103,15 +103,15 @@ function getSolutions(a, b, c){
             }
           
             
-          return person
+          return person;
           }
           
           
           function getDecodedValue(secret) {
           if (secret == 1) {
-            return "Эмильо"
+            return "Эмильо";
           } else if (secret == 0) {
-            return "Родриго"
+            return "Родриго";
           }
           }
           
