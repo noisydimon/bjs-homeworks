@@ -9,105 +9,88 @@ class PrintEditionItem {
     this.type = null;
   }
   fix() {
-    return this.state * 1.5
-  };
-
-  set (state) {
-    if (this.state < 0) {
-      state = 0
-    } else if (this.state > 100) {
-      state = 100
+    this.state = this.state * 1.5;
+  }
+  set state(newState) {
+    if (newState < 0) {
+      this._state = 0;
+    } else if (newState > 100) {
+      this._state = 100;
     } else {
-      state = state
+      this._state = newState;
     }
   }
-  get() {
-    return _state
+  get state() {
+    return this._state;
   }
-}
 
+};
 
-class magazine extends PrintEditionItem {
-  constructor() {
+class Magazine extends PrintEditionItem {
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount)
     this.type = "magazine";
   }
-}
+};
 
-class book extends PrintEditionItem {
+class Book extends PrintEditionItem {
   constructor(author, name, releaseDate, pagesCount) {
     super(name, releaseDate, pagesCount)
     this.type = "book";
     this.author = author;
   }
-}
+};
 
-class NovelBook extends book {
-  constructor() {
+class NovelBook extends Book {
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
     this.type = "novel";
   }
-}
+};
 
-class FantasticBook extends book {
+class FantasticBook extends Book {
   constructor(author, name, releaseDate, pagesCount) {
-    super(author, name, releaseDate, pagesCount)
+    super(author, name, releaseDate, pagesCount);
     this.type = "fantastic";
   }
-}
+};
 
-class DetectiveBook extends book {
-  constructor() {
-    this.type = "detective";
+class DetectiveBook extends Book {
+  constructor(author, name, releaseDate, pagesCount) {
+    super(author, name, releaseDate, pagesCount);
+    this.type = "detectiv";
   }
-}
-
-const picknick = new FantasticBook("Аркадий и Борис Стругацкие", "Пикник на обочине", 1972, 168);
-
-
-console.log(picknick.author); //"Аркадий и Борис Стругацкие"
-
-picknick.state = 10;
-console.log(picknick.state); //10
-
-picknick.fix();
-console.log(picknick.state); //15
-
-
-
-//Задача 2
+};
 
 class Library {
-  constructor (libraryName, books) {
-  this.libraryName = libraryName;
-  this.books = [];
+  constructor(name, books) {
+    this.name = name;
+    this.books = [];
   }
-  addbook(book){
-    if(this.book.state > 30) {
-      this.books.push(book.bookName);
+  addBook(book) {
+    if (book.state > 30) {
+      this.books.push(book);
     }
   }
-  
   findBookBy(type, value) {
-  for (let i = 0; i < this.books.length; i++) {
-    for (let prop in this.books[i]) {
-      if (prop ===type && this.books[i]) {        
-          return this.books[i].name;
-        } else {
-          return null
-          };
-      }
-    }
-  }
-   giveBookByName(bookName){
-    for (let i = 0; i < this.books.length; i++){
-      if (this.books[i].name === bookName){
-        this.books.splice([i],1);
-        console.log(`Удаленная книга  ${bookName} ${this.books[i]}`);
-        return this.books[i];
-      } else {
-        return null
+    for (let i = 0;i < this.books.length;i++) {
+      for (let prop in this.books[i]) {
+        if (prop === type &&  this.books[i][prop] === value){
+          return this.books[i];
         };
       }
-   }
+    }
+    return null;
+  }
+
+  giveBookByName(bookName){
+    for(let i = 0;i < this.books.length;i++){
+      if(this.books[i].name === bookName){
+        return this.books.splice([i],1);
+      }
+    }
+    return null;
+  }
 }
 
 
@@ -134,4 +117,4 @@ class Library {
   console.log(log)
   
   log.getName()
-  log.addGrade(23, `math`)
+  log.addGrade(23, `math`)*/
