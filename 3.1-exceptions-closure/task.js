@@ -1,17 +1,20 @@
 function parseCount(string) {
-  let result = Number.parseInt(string)
-  if(result === NaN) {
-    throw "Невалидное значение"
-  } else {
+  let result = Number.parseInt(string);
+  if (Number.isNaN(result)) {
+    const divideError = new Error("Невалидное значение");
+    throw divideError;
+  }
   return result
-}
 }
 console.log(parseCount("5"))
 
 function validateCount(string) {
-  try{parseCount(string)}catch(err){return err
-}
-return parseCount(string)
+  try {
+    parseCount(string)
+  } catch (err) {
+    return err
+  }
+  return parseCount(string)
 }
 
 validateCount("ikzgf")
@@ -25,46 +28,45 @@ class Triangle {
     this.a = a;
     this.b = b;
     this.c = c;
-    if((this.a + this.b) < this.c || (this.a + this.c) < this.b || (this.b + this.c) < this.a) {
-      throw `Треугольник с такими сторонами ${a}, ${b}, ${c} не существует`
-      }
+    if ((a + b) < c || (a + c) < b || (b + c) < a) {
+      const divideError1 = new Error(`Треугольник с такими сторонами ${a}, ${b}, ${c} не существует`);
+      throw divideError1
     }
-  
-   
-     
-     
-    getPerimeter(){
-      let perimeter = a + b + c;
-      return perimetr
-    }  
-   
-    getArea() {
-      let p = getPerimeter();
-      let S = Math.sqrt(p/2 * (p/2 - a) * (p/2 - b) * (p/2 - c));
-      return Math.floor(S * 1000) / 1000;
-    }
+  }
+
+
+
+
+  getPerimeter() {
+    return this.a + this.b + this.c;
+  }
+
+  getArea() {
+    let p = getPerimeter();
+    let S = Math.sqrt(p / 2 * (p / 2 - this.a) * (p / 2 - this.b) * (p / 2 - this.c));
+    return Math.floor(S * 1000) / 1000;
+  }
 }
 
 const trin1 = new Triangle(5, 4, 7)
 console.log(trin1)
 
 
-function getTriangle(a, b, c){
+function getTriangle(a, b, c) {
   let newTriangle = {
-    getPerimeter(){
-      return "Ошибка! Треугольник не существует"
-    },
-     getArea(){
-      return "Ошибка! Треугольник не существует"
-    },
+   getPerimeter: () => "Ошибка! Треугольник не сущесует",    
+   getArea : () => "Ошибка! Треугольник не сущесует",
   }
-  try{Triangle.constructor}catch(err){
-    
+
+  try {
+    const tryTriangle = new Triangle(a, b, c)
+  } catch (err) {
+
     return newTriangle
   }
 }
 
-const tri1 = new Triangle(6, 8, 18)
-console.log(tri1.checkTriangle())
+const tri1 = new Triangle(6, 8, 9)
+
 
 
